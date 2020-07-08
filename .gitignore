@@ -1,11 +1,3 @@
 /node_modules
-/client/node_modules
-/client/node_modules
-
-# testing
-/client/coverage
-
-# production
-/client/build
 
 
