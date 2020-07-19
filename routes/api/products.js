@@ -11,7 +11,7 @@ const passport = require("passport");
 router.get("/", (req, res) => {
   Product.find()
     .then((product) => res.json(product))
-    .catch((err) => res.status.json(err));
+    .catch((err) => res.json(err));
 });
 
 // @route   GET api/product/:item
@@ -23,7 +23,7 @@ router.get("/:item", (req, res) => {
     .then((item) => {
       res.json(item);
     })
-    .catch((err) => res.status.json({ item: "Item not found" }));
+    .catch((err) => res.json({ item: "Item not found" }));
 });
 
 // @route   Post api/product/:item
@@ -38,7 +38,7 @@ router.post(
       User.findOne({ email: req.user.email }, (err, user) => {
         user.cart.forEach((element) => {
           if (element == item.id) {
-            res.status.json({ msg: "Item already exist" });
+            res.json({ msg: "Item already exist" });
           }
         });
         user.cart.push(item.id);

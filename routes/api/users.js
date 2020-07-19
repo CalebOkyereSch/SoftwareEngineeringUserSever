@@ -109,7 +109,7 @@ router.post("/signin", (req, res) => {
   });
 });
 
-// @route   GET api/users/cartnp
+// @route   GET api/users/cart
 // @desc    get cart page
 // @access  Public tested
 
@@ -137,25 +137,24 @@ router.get(
 // @access  Public tested
 
 router.get(
-  "/cart/:id",
+  "/cart/item/:id",
   passport.authenticate("jwt", { session: false }),
   (req, res) => {
     if (req.user) {
       // find product using the id of params
       Product.findById(req.params.id).then((product) => {
         // this is going to admi's cart to display on admi dashboard
-        console.log(product);
         const cus = req.user._id;
         const prod = product._id;
-        console.log(req.user);
+
         const newCart = new AdmiCart({});
         newCart.customer = cus;
         newCart.product = prod;
 
         newCart
           .save()
-          .then((item) => {
-            res.json(item.product);
+          .then(() => {
+            res.json(req.user.cart);
           })
           .catch((err) => res.status(400).json(err));
       });

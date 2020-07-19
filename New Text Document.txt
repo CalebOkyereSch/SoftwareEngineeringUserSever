@@ -1,0 +1,10 @@
+How to Run User Web Application 
+1. Clone the sever of the user application 
+2. Clone the client of the user application 
+3. Locate the client folder in the server repository you have cloned and copy everything in the userclient repository into the client folder you located
+4. open your command prompt and navigate to server repository you cloned and install every dependency using "npm install" 
+5. navigate into the client folder in the server folder and install every dependency using "npm install" 
+6. navigate to the server folder and run web application using "npm run dev".. this is going to run both server and client 
+NB. Internet connection needed.
+7. Client is running port 3000 
+NB. Unregistered users are not able to add anything to cart or buy anything 
